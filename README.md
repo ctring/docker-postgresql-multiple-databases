@@ -34,10 +34,20 @@ Clone the repository, mount its directory as a volume into
 ### By building a custom image
 
 Clone the repository, build and push the image to your Docker repository,
-for example for Google Private Repository do the following:
+For Docker Hub Registry
 
-    docker build --tag=eu.gcr.io/your-project/postgres-multi-db .
-    gcloud docker -- push eu.gcr.io/your-project/postgres-multi-db
+```sh
+docker build -t <username>/postgres-multi-db .
+docker login
+docker push <username>/postgres-multi-db
+```
+
+For Google Private Repository do the following:
+
+```sh
+docker build --tag=eu.gcr.io/your-project/postgres-multi-db .
+gcloud docker -- push eu.gcr.io/your-project/postgres-multi-db
+```
 
 You still need to pass the `POSTGRES_MULTIPLE_DATABASES` environment variable
 to the container:
